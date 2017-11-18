@@ -1,0 +1,36 @@
+/static StaticR Static appStatic
+
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
+
+--cliente
+/                                 			   HomeR                GET 
+/produto/listar                   			   ProdutoListarR       GET --CARDAPIO
+/produto/detalhar/#ProdutoId      			   ProdutoDetalharR     GET
+/cliente/cadastrar                			   ClienteCadastarR     GET POST
+/cliente/detalhar                 			   ClienteDetalharR     GET
+/cliente/alterar                  			   ClienteAlterarR      GET POST
+/cliente/acessar                  			   ClienteAcessarR      GET POST --LOGIN
+/endereco/cadastrar               			   EnderecoCadastrarR   GET POST
+/endereco/listar                  			   EnderecoListarR      GET
+/endereco/detalhar/#EnderecoId    			   EnderecoDetalharR    GET
+/endereco/alterar/#EnderecoId     			   EnderecoAlterarR     GET POST
+/telefone/cadastrar               			   TelefoneCadastrarR   GET POST
+/telefone/listar                  			   TelefoneListarR      GET
+/telefone/alterar/#TelefoneId     			   TelefoneAlterarR     GET POST
+/pedido/listar                    			   PedidoListarR        GET
+/pedido/detalhar/#PedidoId        			   PedidoDetalharR      GET
+/pedido/aberto/detalhar/#PedidoId 			   PedidoAberDetalharR  GET
+/pedido/aberto/alterar/#PedidoId  			   PedidoAberAlterarR   POST
+/pedido/aberto/concluir/#PedidoId 			   PedidoAberConcluirR  GET POST
+
+--adm
+/adm                              			   AdmR                 GET POST --LOGIN PARA AREA DE ADM
+/adm/pedido/listar                			   AdmPedidoListarR     GET
+/adm/pedido/detalhar/#PedidoId    			   AdmPedidoDetalharR   GET 
+/adm/pedido/alterar/#PedidoId     			   AdmPedidoAlterarR    GET POST
+/adm/produto/cadastrar            			   AdmProdutoCadastrarR GET POST
+/adm/produto/listar               			   AdmProdutoListarR    GET POST
+/adm/formaPagamento/cadastrar     			   AdmFormPagCadastrarR GET POST
+/adm/formaPagamento/detalhar/#FormaPagamentoId AdmFormPagDetalharR  GET
+/adm/formaPagamento/alterar       			   AdmFormPagAlterarR   POST
