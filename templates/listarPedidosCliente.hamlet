@@ -1,0 +1,20 @@
+<h2 align="center" style="margin-top:120px">Meus pedidos
+
+<div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 900px;">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="background-color:black;">Seus pedidos
+        <div class="panel-body">
+            $forall (Entity pid pedido) <- pedidos
+                <table>
+                    <tr>
+                        <td width="35%">
+                            <p>
+                                <b>#{formatarData $ pedidoData pedido}
+                        <td>
+                            <h3 style="color: #{verificarStatusPedidoCor $ pedidoStatus pedido};">#{verificarStatusPedido $ pedidoStatus pedido}
+                        <td width="35%">
+                        <td width="14%">
+                            <p>
+                                <h2>Total: R$#{show $ pedidoTotal pedido}
+                <hr>
