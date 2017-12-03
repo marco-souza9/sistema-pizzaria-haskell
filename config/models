@@ -2,17 +2,12 @@ Usuario
     cpf Text
     nome Text
     email Text
+    telefone Text
     senha Text
     tipo Int
     
     UniqueCpf cpf
     UniqueEmail email
-        
-    deriving Show
-Telefone
-    usuario UsuarioId
-    numero Text
-    tipo Int
         
     deriving Show
 Endereco
