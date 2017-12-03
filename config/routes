@@ -3,34 +3,26 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
---cliente
+
 /                                 			   HomeR                GET 
+/login                            			   LoginR               GET POST
+/logout                                        LogoutR              GET
+/cadastro                                      CadastroR            GET POST
+--cliente
 /produto/listar                   			   ProdutoListarR       GET --CARDAPIO
-/produto/detalhar/#ProdutoId      			   ProdutoDetalharR     GET
-/cliente/cadastrar                			   ClienteCadastarR     GET POST
-/cliente/detalhar                 			   ClienteDetalharR     GET
 /cliente/alterar                  			   ClienteAlterarR      GET POST
-/cliente/acessar                  			   ClienteAcessarR      GET POST --LOGIN
-/endereco/cadastrar               			   EnderecoCadastrarR   GET POST
-/endereco/listar                  			   EnderecoListarR      GET
-/endereco/detalhar/#EnderecoId    			   EnderecoDetalharR    GET
-/endereco/alterar/#EnderecoId     			   EnderecoAlterarR     GET POST
-/telefone/cadastrar               			   TelefoneCadastrarR   GET POST
-/telefone/listar                  			   TelefoneListarR      GET
-/telefone/alterar/#TelefoneId     			   TelefoneAlterarR     GET POST
 /pedido/listar                    			   PedidoListarR        GET
-/pedido/detalhar/#PedidoId        			   PedidoDetalharR      GET
-/pedido/aberto/detalhar/#PedidoId 			   PedidoAberDetalharR  GET
-/pedido/aberto/alterar/#PedidoId  			   PedidoAberAlterarR   POST
-/pedido/aberto/concluir/#PedidoId 			   PedidoAberConcluirR  GET POST
+/pedido/aberto/detalhar 			           PedidoAberDetalharR  GET --CARRINHO
+/pedido/aberto/alterar  			           PedidoAberAlterarR   POST --REMOVER ITEM
+/pedido/aberto/concluir         			   PedidoAberConcluirR  GET POST --FINALIZAR
 
 --adm
-/adm                              			   AdmR                 GET POST --LOGIN PARA AREA DE ADM
 /adm/pedido/listar                			   AdmPedidoListarR     GET
 /adm/pedido/detalhar/#PedidoId    			   AdmPedidoDetalharR   GET 
-/adm/pedido/alterar/#PedidoId     			   AdmPedidoAlterarR    GET POST
-/adm/produto/cadastrar            			   AdmProdutoCadastrarR GET POST
-/adm/produto/listar               			   AdmProdutoListarR    GET POST
-/adm/formaPagamento/cadastrar     			   AdmFormPagCadastrarR GET POST
-/adm/formaPagamento/detalhar/#FormaPagamentoId AdmFormPagDetalharR  GET
-/adm/formaPagamento/alterar       			   AdmFormPagAlterarR   POST
+/adm/pedido/alterar/#PedidoId     			   AdmPedidoAlterarR    POST
+/adm/produto/gerenciar            			   AdmProdutoGerenciarR GET
+/adm/produto/cadastrar            			   AdmProdutoCadastrarR POST
+/adm/produto/alterar            			   AdmProdutoAlterarR   POST
+/adm/formaPagamento/gerenciar     			   AdmFormPagGerenciarR GET
+/adm/formaPagamento/cadastrar     			   AdmFormPagCadastrarR POST
+/adm/formaPagamento/alterar     			   AdmFormPagAlterarR   POST

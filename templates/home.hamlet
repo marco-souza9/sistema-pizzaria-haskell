@@ -1,0 +1,84 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">
+                    <span class="icon-bar">
+                    <span class="icon-bar">
+                <a class="navbar-brand" href="#top" style="padding: 0px; border-bottom: none;">
+                    <img src=@{StaticR img_logo_png} height="66" width="147">
+                     
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav main-nav  clear navbar-right ">
+                    <li>
+                        <a class="color_animation" href="#story">Quem somos
+                    <li>
+                        <a class="color_animation" href="#pricing">Cardápio
+                    <li>
+                        <a class="color_animation nao" href=@{CadastroR}>Crie sua conta
+                    <li>
+                        <a class="color_animation nao" href=@{LoginR}>Entrar
+                        
+<div id="top" class="starter_container bg">
+    <div class="follow_container">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 class="top-title"><img src=@{StaticR img_logo_png} height="254" width="577">
+            <h2 class="white second-title">"Sua pizza, mais emocionante!"
+            <hr>
+
+<!-- ============ Quem somos ============= -->
+<section id="story" class="description_content">
+    <div class="text-content container">
+        <div class="col-md-6">
+            <h1>Quem somos
+            <div class="fa fa-cutlery fa-2x">
+            <p class="desc-text">Apaixonados por futebol e, principalmente, pela Copa do Mundo e todo seu ambiente mágico! Resolvemos então reunir esses ingredientes com outra paixão mundial: a pizza! Dessa forma, a Pizzaria Penta! foi criada. Esperamos que você goste dos nossos sabores e, diferente da Copa do Mundo, volte sempre!
+        <div class="col-md-6">
+            <div class="img-section">
+               <img src=@{StaticR img_sobre1_jpeg} width="250" height="220">
+               <img src=@{StaticR img_sobre2_jpeg} width="250" height="220">
+               <div class="img-section-space"></div>
+               <img src=@{StaticR img_sobre3_jpeg}  width="250" height="220">
+               <img src=@{StaticR img_sobre4_jpg}  width="250" height="220">
+       
+<!-- ============ Cardápio  ============= -->
+<section id="pricing" class="description_content">
+     <div class="pricing background_content">
+        <h1>
+            <span>Cardápio
+    <div class="text-content container"> 
+        <div class="container">
+            <div class="row">
+                <div id="w">
+                    <ul id="filter-list" class="clearfix">
+                        <li class="filter" data-filter="all">Tudo
+                        <li class="filter" data-filter="promocoes">Promocoes
+                        <li class="filter" data-filter="pizza">Pizzas
+                        <li class="filter" data-filter="sobremesas">Sobremesas
+                        <li class="filter" data-filter="bebidas">Bebidas
+                    <ul id="portfolio">
+                        $forall (Entity pid produto) <- produtos
+                            <li class="item #{produtoTipo produto}"><img src=#{produtoImagem produto} alt="#{produtoNome produto}" height="166" width="500">
+                                <h2 class="white">#{produtoNome produto}  R$#{produtoPreco produto} 
+    
+<!-- ============ Social Section  ============= -->
+<section class="social_connect">
+    <div class="text-content container"> 
+        <div class="col-md-8">
+            <span class="social_heading">Siga-nos em nossas redes sociais!
+            <ul class="social_icons">
+                <li>
+                    <a class="icon-github color_animation" href="https://github.com/marco-souza9/sistema-pizzaria-haskell" target="_blank">
+        <div class="col-md-4">
+            <span class="social_heading">Ligue!
+            <span class="social_info">
+                <a class="color_animation">(013) 0000-1111
+
+<!-- ============ Footer Section  ============= -->
+<footer class="sub_footer_b">
+    <div class="container">
+        <div class="col-md-12">
+            <p class="sub-footer-text text-center">Voltar para o 
+                <a href="#top">TOPO
