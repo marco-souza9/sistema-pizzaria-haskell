@@ -1,0 +1,10 @@
+        <h2 align="center" style="margin-top:120px">Cadastrar
+
+        <div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 900px;">
+    
+            <div class="panel panel-primary" style="text-align:center;">
+                <div class="panel-heading" style="background-color:black;">Cadastre aqui seu novo produto
+                <div class="panel-body">
+                    <form action=@{AdmProdutoCadastrarR} method=post enctype=#{enctype}>
+                        ^{widget}
+                        <input class="btn btn-info" style="background-color:steelblue;margin: 10px auto 0 auto;" type="submit" value="Cadastrar">
