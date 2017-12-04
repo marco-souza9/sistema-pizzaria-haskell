@@ -8,14 +8,29 @@ module Handler.FormaPagamento where
 
 import Import
 
+formCadastro :: Form (Text)
+formCadastro = renderDivs $ areq textField formaSettings Nothing
+    where formaSettings = FieldSettings{fsId= Nothing,
+                           fsLabel= "",
+                           fsTooltip= Nothing,
+                           fsName= Nothing,
+                           fsAttrs=[("class","form-control"),("placeholder","Forma de pagamento"),("maxlength","30")]}
+
 postAdmFormPagCadastrarR :: Handler Html
-postAdmFormPagCadastrarR = undefined
+postAdmFormPagCadastrarR = do 
+    ((res,_),_) <- runFormPost formCadastro
+    case res of 
+        FormSuccess (formaF) -> do 
+            _ <- runDB $ insert (FormaPagamento formaF True)  
+            redirect $ AdmFormPagGerenciarR
+        _ -> redirect $ AdmFormPagGerenciarR
 
 postAdmFormPagAlterarR :: Handler Html
 postAdmFormPagAlterarR = undefined
 
 getAdmFormPagGerenciarR :: Handler Html
 getAdmFormPagGerenciarR = do
+    (widget, enctype) <- generateFormPost formCadastro
     defaultLayout $ do
         setTitle "Gerenciar Forma de Pagamento"
         --css estático
