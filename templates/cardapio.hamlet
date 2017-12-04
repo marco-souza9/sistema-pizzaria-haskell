@@ -1,0 +1,102 @@
+<h2 align="center" style="margin-top:120px">Faça seu pedido!
+
+<div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 900px;">
+
+    <div class="panel with-nav-tabs panel-primary">
+        <div class="panel-heading" style="background-color:black;">
+            <ul class="nav nav-tabs" style="background-color:black;">
+                <li class="active">
+                    <a href="#tab1primary" data-toggle="tab">Promoções
+                <li>
+                    <a href="#tab2primary" data-toggle="tab">Pizzas
+                <li>
+                    <a href="#tab3primary" data-toggle="tab">Sobremesas
+                <li>
+                    <a href="#tab4primary" data-toggle="tab">Bebidas
+
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1primary">
+                    <div class="row" style="margin-left:20px">
+                        $forall (Entity pid promocao) <- promocoes
+                            <table>
+                                <tr>
+                                    <td width="20%">
+                                        <h2 class="list-group-item-heading">#{produtoNome promocao}
+                                        <img src="#{produtoImagem promocao}" width="150" height="150" style="border-style:solid; border-color:steelblue; border-width:5px">
+                                
+                                    <td width="40%">
+                                        <p align="justify">#{produtoDescricao promocao}
+                                
+                                    <td width="5%">
+                                    <td width="15%">
+                                        <p>
+                                            <h2>R$#{produtoPreco promocao} 
+                                    <td>
+                                        <form action=@{PedidoAberAdicionarR} method=post>
+
+                                            <button class="btn btn-primary" style="background-color:steelblue">Adicionar ao carrinho
+                            <hr>
+                <div class="tab-pane fade" id="tab2primary">
+                    <div class="row" style="margin-left:20px">
+                        $forall (Entity pid pizza) <- pizzas
+                            <table>
+                                <tr>
+                                    <td width="20%">
+                                        <h2 class="list-group-item-heading">#{produtoNome pizza}
+                                        <img src="#{produtoImagem pizza}" width="150" height="150" style="border-style:solid; border-color:steelblue; border-width:5px">
+                                
+                                    <td width="40%">
+                                        <p align="justify">#{produtoDescricao pizza}
+                                
+                                    <td width="5%">
+                                    <td width="15%">
+                                        <p>
+                                            <h2>R$#{produtoPreco pizza} 
+                                    <td>
+                                        <form action=@{PedidoAberAdicionarR} method=post>
+                                            
+                                            <button class="btn btn-primary" style="background-color:steelblue">Adicionar ao carrinho
+                            <hr>    
+                <div class="tab-pane fade" id="tab3primary">
+                    <div class="row" style="margin-left:20px">
+                        $forall (Entity sid sobremesa) <- sobremesas
+                            <table>
+                                <tr>
+                                    <td width="20%">
+                                        <h2 class="list-group-item-heading">#{produtoNome sobremesa}
+                                        <img src="#{produtoImagem sobremesa}" width="150" height="150" style="border-style:solid; border-color:steelblue; border-width:5px">
+                                
+                                    <td width="40%">
+                                        <p align="justify">#{produtoDescricao sobremesa}
+                                
+                                    <td width="5%">
+                                    <td width="15%">
+                                        <p>
+                                            <h2>R$#{produtoPreco sobremesa} 
+                                    <td>
+                                        <form action=@{PedidoAberAdicionarR} method=post>
+
+                                            <button class="btn btn-primary" style="background-color:steelblue">Adicionar ao carrinho
+                            <hr>   
+                <div class="tab-pane fade" id="tab4primary">
+                    <div class="row" style="margin-left:20px">
+                        $forall (Entity bid bebida) <- bebidas
+                            <table>
+                                <tr>
+                                    <td width="20%">
+                                        <h2 class="list-group-item-heading">#{produtoNome bebida}
+                                        <img src="#{produtoImagem bebida}" width="150" height="150" style="border-style:solid; border-color:steelblue; border-width:5px">
+                                    
+                                    <td width="40%">
+                                        <p align="justify">#{produtoDescricao bebida}
+                                
+                                    <td width="5%">
+                                    <td width="15%">
+                                        <p>
+                                            <h2>R$#{produtoPreco bebida} 
+                                    <td>
+                                        <form action=@{PedidoAberAdicionarR} method=post>
+
+                                            <button class="btn btn-primary" style="background-color:steelblue">Adicionar ao carrinho
+                            <hr>        
