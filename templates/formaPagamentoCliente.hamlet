@@ -1,0 +1,20 @@
+        <h2 align="center" style="margin-top:120px">Pagamento
+
+        <div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 300px;">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color:black;">Escolha a forma de pagamento
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+						    <div style="margin-left:75px">
+						    <select>
+                                        <option value="pizza">Cartão
+                                        <option value="bebida">Dinheiro
+                                        <option value="sobremesa">Paypal
+                                    <br>
+                                    <br>
+                                    <button class="btn btn-info">Concluir
+                     
+	      
+			   
