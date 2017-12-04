@@ -1,0 +1,40 @@
+<h2 align="center" style="margin-top:120px">Cadastrar forma de pagamento
+
+        <div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 900px;">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color:black;">Cadastre a forma de pagamento
+                    <div class="panel-body">
+
+                        <table>
+                            <tr>
+                                <td width="80%">
+                                    <h2><input id="inputUsuario" class="form-control" placeholder="Forma de pagamento" required autofocus>
+                                
+                                <!---->
+                               
+                                <td width="15%">
+                                <td width="25%">
+                                    <p><h2><button class="btn btn-primary" style="background-color:steelblue; font-size:15px">Cadastrar
+                                
+                                <td width="15%">
+
+        <h2 align="center" style="margin-top:30px">Formas de pagamento já cadastradas
+
+        <div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 900px;">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color:black;">Formas de pagamento
+                    <div class="panel-body">
+
+                        <table>
+                            <tr>
+                                <td width="80%">
+                                    <h3>Cartão
+                                <!---->
+                               
+                                <td width="15%">
+                                <td width="25%">
+                                        <p><h2><button class="btn btn-primary" style="background-color:steelblue; font-size:15px">Desabilitar
+                                <td width="15%">
+                        <hr>
