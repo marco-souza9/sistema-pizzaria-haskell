@@ -13,6 +13,7 @@
 /cliente/alterar                  			   ClienteAlterarR      GET POST
 /pedido/listar                    			   PedidoListarR        GET
 /pedido/aberto/detalhar 			           PedidoAberDetalharR  GET --CARRINHO
+/pedido/aberto/adicionar/#PedidoId  		   PedidoAberAdicionarR POST --ADICIONAR ITEM NO CARRINHO
 /pedido/aberto/alterar  			           PedidoAberAlterarR   POST --REMOVER ITEM
 /pedido/aberto/concluir         			   PedidoAberConcluirR  GET POST --FINALIZAR
 
@@ -23,6 +24,7 @@
 /adm/produto/gerenciar            			   AdmProdutoGerenciarR GET
 /adm/produto/cadastrar            			   AdmProdutoCadastrarR POST
 /adm/produto/alterar            			   AdmProdutoAlterarR   POST
+/adm/produto/ocultar                           AdmProdutoOcultarR   POST
 /adm/formaPagamento/gerenciar     			   AdmFormPagGerenciarR GET
 /adm/formaPagamento/cadastrar     			   AdmFormPagCadastrarR POST
 /adm/formaPagamento/alterar     			   AdmFormPagAlterarR   POST
