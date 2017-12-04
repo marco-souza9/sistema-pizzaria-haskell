@@ -42,8 +42,30 @@ formCadastro = renderTable $ (,,,,)
                            fsAttrs=[("class","form-control inputForm"),("placeholder","Preço")]}
 
 getProdutoListarR :: Handler Html
-getProdutoListarR = undefined
-
+getProdutoListarR =  do
+    promocoes <- runDB $ selectList [ProdutoTipo ==. "promocoes"] []
+    pizzas <- runDB $ selectList [ProdutoTipo ==. "pizza"] []
+    sobremesas <- runDB $ selectList [ProdutoTipo ==. "sobremesas"] []
+    bebidas <- runDB $ selectList [ProdutoTipo ==. "bebidas"] []
+    defaultLayout $ do 
+        setTitle "Cardápio"
+        --css estático
+        addStylesheet $ (StaticR css_bootstrap_css)
+        addStylesheet $ (StaticR css_font_awesome_min_css)
+        addStylesheet $ (StaticR css_jquery_ui_css)
+        addStylesheet $ (StaticR css_main_css)
+        addStylesheet $ (StaticR css_normalize_css)
+        addStylesheet $ (StaticR css_picto_foundry_food_css)
+        addStylesheet $ (StaticR css_style_portfolio_css)
+        --corpo html
+        $(whamletFile "templates/commons/navbarcli.hamlet")
+        $(whamletFile "templates/cardapio.hamlet")
+        --javascript estático
+        addScript $ (StaticR js_jquery_1_10_2_min_js) 
+        addScript $ (StaticR js_jquery_1_10_2_js)        
+        addScript $ (StaticR js_jquery_mixitup_min_js)
+        addScript $ (StaticR js_bootstrap_min_js)
+        
 getAdmProdutoGerenciarR :: Handler Html
 getAdmProdutoGerenciarR =  do    
     (widget, enctype) <- generateFormPost formCadastro
@@ -77,8 +99,8 @@ postAdmProdutoCadastrarR = do
         FormSuccess (nomeP,imagemP,descricaoP,precoP,tipoP) -> do 
             case imagemP of
                 Just imagem -> do
-                    _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP (pack ("static/img/uploads/" ++ (removeCaracteres (unpack $ fileName imagem) " "))) True tipoP)
-                    liftIO $ fileMove imagem ("static/img/uploads/" ++ (removeCaracteres (unpack $ fileName imagem) " "))
+                    _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP (pack ("static/img/" ++ (removeCaracteres (unpack $ fileName imagem) " "))) True tipoP)
+                    liftIO $ fileMove imagem ("static/img/" ++ (removeCaracteres (unpack $ fileName imagem) " "))
                     redirect $ AdmProdutoGerenciarR
                 _ -> do 
                     _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP "static/img/padrao.png" True tipoP)
@@ -87,3 +109,6 @@ postAdmProdutoCadastrarR = do
         
 postAdmProdutoAlterarR :: Handler Html
 postAdmProdutoAlterarR = undefined
+
+postAdmProdutoOcultarR :: Handler Html
+postAdmProdutoOcultarR = undefined
