@@ -7,6 +7,7 @@
 module Handler.Produto where
 
 import Import
+import Prelude(length)
 
 formCadastro :: Form (Text, Maybe FileInfo,Textarea,Double,Text)
 formCadastro = renderTable $ (,,,,) 
