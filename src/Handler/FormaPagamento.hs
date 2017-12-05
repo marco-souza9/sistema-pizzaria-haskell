@@ -16,6 +16,10 @@ formCadastro = renderDivs $ areq textField formaSettings Nothing
                            fsName= Nothing,
                            fsAttrs=[("class","form-control"),("placeholder","Forma de pagamento"),("maxlength","30")]}
 
+verificarStatusFormaPagamento :: Bool -> Text
+verificarStatusFormaPagamento True = "Desabilitar" 
+verificarStatusFormaPagamento _ = "Habilitar"
+
 postAdmFormPagCadastrarR :: Handler Html
 postAdmFormPagCadastrarR = do 
     ((res,_),_) <- runFormPost formCadastro
@@ -30,6 +34,7 @@ postAdmFormPagAlterarR = undefined
 
 getAdmFormPagGerenciarR :: Handler Html
 getAdmFormPagGerenciarR = do
+    formas <- runDB $ selectList ([] :: [Filter FormaPagamento]) []
     (widget, enctype) <- generateFormPost formCadastro
     defaultLayout $ do
         setTitle "Gerenciar Forma de Pagamento"
