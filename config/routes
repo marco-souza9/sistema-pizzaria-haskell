@@ -10,7 +10,6 @@
 /cadastro                                      CadastroR            GET POST
 --cliente
 /produto/listar                   			   ProdutoListarR       GET --CARDAPIO
-/cliente/alterar                  			   ClienteAlterarR      GET POST
 /pedido/listar                    			   PedidoListarR        GET
 /pedido/aberto/detalhar 			           PedidoAberDetalharR  GET --CARRINHO
 /pedido/aberto/adicionar/#ProdutoId  		   PedidoAberAdicionarR POST --ADICIONAR ITEM NO CARRINHO
