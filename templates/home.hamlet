@@ -59,10 +59,13 @@
                         <li class="filter" data-filter="sobremesas">Sobremesas
                         <li class="filter" data-filter="bebidas">Bebidas
                     <ul id="portfolio">
-                        $forall (Entity pid produto) <- produtos
-                            <li class="item #{produtoTipo produto}"><img src=#{produtoImagem produto} alt="#{produtoNome produto}" height="166" width="500">
-                                <h2 class="white">#{produtoNome produto}  R$#{produtoPreco produto} 
-    
+                        $if lenght produtos == 0
+                            <h3>Nenhum produto encontrado
+                        $else
+                            $forall (Entity pid produto) <- produtos
+                                <li class="item #{produtoTipo produto}"><img src=#{produtoImagem produto} alt="#{produtoNome produto}" height="166" width="500">
+                                    <h2 class="white">#{produtoNome produto}  R$#{produtoPreco produto} 
+
 <!-- ============ Social Section  ============= -->
 <section class="social_connect">
     <div class="text-content container"> 
