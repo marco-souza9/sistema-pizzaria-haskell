@@ -16,9 +16,9 @@ formCadastro = renderDivs $ areq textField formaSettings Nothing
                            fsName= Nothing,
                            fsAttrs=[("class","form-control"),("placeholder","Forma de pagamento"),("maxlength","30")]}
 
-verificarStatusFormaPagamento :: Bool -> Text
+{--verificarStatusFormaPagamento :: Bool -> Text
 verificarStatusFormaPagamento True = "Desabilitar" 
-verificarStatusFormaPagamento _ = "Habilitar"
+verificarStatusFormaPagamento _ = "Habilitar"--}
 
 postAdmFormPagCadastrarR :: Handler Html
 postAdmFormPagCadastrarR = do 
