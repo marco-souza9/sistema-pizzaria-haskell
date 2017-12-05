@@ -16,7 +16,7 @@
                     <li>
                         <a class="color_animation" href=@{AdmPedidoListarR}>Geranciar pedidos
                     <li>
-                        <a class="color_animation" href=@{AdmProdutoGerenciarR}>Geranciar produtos
+                        <a class="color_animation" href=@{AdmProdutoGerenciarR}>Cadastrar produtos
                     <li>
                         <a class="color_animation" href=@{AdmFormPagGerenciarR}>Formas de pagamento
                     <li>
