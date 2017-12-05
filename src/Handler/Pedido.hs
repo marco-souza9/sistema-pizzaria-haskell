@@ -9,7 +9,7 @@ module Handler.Pedido where
 import Import
 import Database.Persist.Sql
 import Data.Time
-import Prelude (read) 
+import Prelude (read,head) 
 
 verificarStatusPedido :: Int -> Text
 verificarStatusPedido 1 = "Aberto"
@@ -62,19 +62,9 @@ getPedidoListarR = do
         addScript $ (StaticR js_jquery_mask_min_js)
         addScript $ (StaticR js_mascaras_js)
         addScript $ (StaticR js_main_js) 
-
-retornarIdsCarrinho :: [(Int,Int)] -> [Key Produto]
-retornarIdsCarrinho xs = [(toSqlKey $ fromIntegral $ fst x) :: ProdutoId | x <- xs]
-
-retornaQuantidadeCarrinho :: ProdutoId -> [(Int,Int)] -> [Int]
-retornaQuantidadeCarrinho pid xs = [snd x | x <- xs, pid == (toSqlKey $ fromIntegral $ fst x)]
-
+        
 getPedidoAberDetalharR :: Handler Html
 getPedidoAberDetalharR = do
-    carrinho <- lookupSession "carrinho"
-    lista <- return $ retornarCarrinho carrinho
-    listaIdProdutos <- return $ retornarIdsCarrinho lista
-    produtos <- runDB $ selectList [ProdutoId <-. listaIdProdutos] []
     defaultLayout $ do
         setTitle "Carrinho"
         --css estático
@@ -124,61 +114,6 @@ getPedidoAberConcluirR = undefined
 
 postPedidoAberConcluirR :: Handler Html
 postPedidoAberConcluirR = undefined
-
-detalhePedido :: Entity Pedido -> Widget
-detalhePedido (Entity pid pedido) =  do
-    usuario <- handlerToWidget $ runDB $ get404 $ pedidoUsuario pedido
-    [whamlet|
-            <table>
-                <tr>
-                    <td width="10%">
-                        <p><b>#{usuarioNome usuario}
-						<p style="margin-top:3px;">#{usuarioCpf usuario}
-						<p style="margin-top:3px;">#{formatarData $ pedidoData pedido}
-                   
-                    <td width="15%"><p style="margin-top:9px; font-size:20px;">#{enderecoNaosei endereco}
-						<p style="margin-top:3px;  font-size:20px;">#{usuarioTelefone usuario}
-                   
-                    <td width="10%">
-                        <h3>Em aberto
-			
-            <table>
-            <br><br>
-            <th><h2 style="color:#006600">Itens
-			
-                <tr>
-				
-                    <td width="10%">
-                    <br>
-                        <p>
-                            <b>#{produtoNome produto}
-                    
-                    <td width="14%">  
-                        <br> 
-                            <p>Quantidade: #{pedidoQuantidade pedido}
-                   
-                    <td width="10%">
-                        <br>
-                            <p>Preço: R$#{produtoPreco produto}
-
-            <table>
-            <br><br>
-            <th>
-                <h2 style="color:#000066">Total
-			
-			<!-- Total -->
-                <tr>
-				
-                    <td width="10%">
-                    <br>
-                        <p  style="color:black">
-                            <b>
-                   
-                    <td width="25%">  
-                        <br> 
-                            <p  style="color:black">
-                                <b>Valor: R$#{show $ pedidoTotal pedido} 
-    |] 
 
 mostraPedido :: Entity Pedido -> Widget
 mostraPedido (Entity pid pedido) =  do
