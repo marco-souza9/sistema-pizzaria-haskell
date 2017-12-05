@@ -62,9 +62,19 @@ getPedidoListarR = do
         addScript $ (StaticR js_jquery_mask_min_js)
         addScript $ (StaticR js_mascaras_js)
         addScript $ (StaticR js_main_js) 
-        
+
+retornarIdsCarrinho :: [(Int,Int)] -> [Key Produto]
+retornarIdsCarrinho xs = [(toSqlKey $ fromIntegral $ fst x) :: ProdutoId | x <- xs]
+
+retornaQuantidadeCarrinho :: ProdutoId -> [(Int,Int)] -> Int
+retornaQuantidadeCarrinho pid xs = Prelude.head [snd x | x <- xs, pid == (toSqlKey $ fromIntegral $ fst x)]
+
 getPedidoAberDetalharR :: Handler Html
 getPedidoAberDetalharR = do
+    carrinho <- lookupSession "carrinho"
+    lista <- return $ retornarCarrinho carrinho
+    listaIdProdutos <- return $ retornarIdsCarrinho lista
+    produtos <- runDB $ selectList [ProdutoId <-. listaIdProdutos] []
     defaultLayout $ do
         setTitle "Carrinho"
         --css estático
