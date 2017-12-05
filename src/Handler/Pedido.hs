@@ -119,8 +119,39 @@ postPedidoAberAdicionarR pid = do
 postPedidoAberAlterarR :: Handler Html
 postPedidoAberAlterarR = undefined
 
+buscarEndereco :: Maybe Text -> HandlerT App IO (Maybe (Entity Endereco))
+buscarEndereco (Just valor) = runDB $ selectFirst [EnderecoUsuario ==. (chave)] []
+    where
+        valorInt = read (unpack valor) :: Int
+        chave = toSqlKey (fromIntegral (valorInt) ) :: UsuarioId
+
 getPedidoAberConcluirR :: Handler Html
-getPedidoAberConcluirR = undefined
+getPedidoAberConcluirR = do
+    usuId <- lookupSession "usuId"
+    endereco <- buscarEndereco usuId
+    formas <- runDB $ selectList [FormaPagamentoDisponivel !=. False]  []
+    defaultLayout $ do
+        setTitle "Finalizar pedido"
+        --css estático
+        addStylesheet $ (StaticR css_bootstrap_css)
+        addStylesheet $ (StaticR css_font_awesome_min_css)
+        addStylesheet $ (StaticR css_jquery_ui_css)
+        addStylesheet $ (StaticR css_main_css)
+        addStylesheet $ (StaticR css_normalize_css)
+        addStylesheet $ (StaticR css_picto_foundry_food_css)
+        addStylesheet $ (StaticR css_style_portfolio_css)
+        --corpo html
+        $(whamletFile "templates/commons/navbarcli.hamlet")
+        $(whamletFile "templates/formaPagamentoCliente.hamlet")
+        --javascript estátic7o
+        addScript $ (StaticR js_jquery_1_10_2_min_js) 
+        addScript $ (StaticR js_jquery_1_10_2_js)        
+        addScript $ (StaticR js_jquery_mixitup_min_js)
+        addScript $ (StaticR js_bootstrap_min_js)
+        addScript $ (StaticR js_jquery_mask_js)
+        addScript $ (StaticR js_jquery_mask_min_js)
+        addScript $ (StaticR js_mascaras_js)
+        addScript $ (StaticR js_main_js)   
 
 postPedidoAberConcluirR :: Handler Html
 postPedidoAberConcluirR = undefined
