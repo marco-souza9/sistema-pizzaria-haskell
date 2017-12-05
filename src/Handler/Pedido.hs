@@ -34,7 +34,6 @@ buscarPedidos (Just valor) = runDB $ selectList [PedidoUsuario ==. (chave)] []
     where
         valorInt = read (unpack valor) :: Int
         chave = toSqlKey (fromIntegral (valorInt) ) :: UsuarioId
-        
 
 
 getPedidoListarR :: Handler Html
@@ -89,10 +88,25 @@ getPedidoAberDetalharR = do
         addScript $ (StaticR js_jquery_mask_js)
         addScript $ (StaticR js_jquery_mask_min_js)
         addScript $ (StaticR js_mascaras_js)
-        addScript $ (StaticR js_main_js) 
+        addScript $ (StaticR js_main_js)   
 
-postPedidoAberAdicionarR :: PedidoId -> Handler Html
-postPedidoAberAdicionarR pid = undefined
+retornarCarrinho :: Maybe Text -> [(Int,Int)]
+retornarCarrinho (Just valor) = read (unpack valor) :: [(Int,Int)]
+
+adicionarCarrinho :: Int -> [(Int,Int)] -> [(Int,Int)]
+adicionarCarrinho id [] = [(id,1)]
+adicionarCarrinho id (x:xs) 
+            | fst x == id = (id,(snd x) + 1) : xs
+            | otherwise = x : adicionarCarrinho id xs
+
+
+postPedidoAberAdicionarR :: ProdutoId -> Handler Html
+postPedidoAberAdicionarR pid = do
+    carrinho <- lookupSession "carrinho"
+    lista <- return $ retornarCarrinho carrinho
+    novoCarrinho <- return $ adicionarCarrinho (fromIntegral (fromSqlKey pid) :: Int) lista
+    setSession "carrinho" $ pack $ show novoCarrinho
+    redirect PedidoAberDetalharR
 
 postPedidoAberAlterarR :: Handler Html
 postPedidoAberAlterarR = undefined
@@ -102,7 +116,6 @@ getPedidoAberConcluirR = undefined
 
 postPedidoAberConcluirR :: Handler Html
 postPedidoAberConcluirR = undefined
-
 
 mostraPedido :: Entity Pedido -> Widget
 mostraPedido (Entity pid pedido) =  do
