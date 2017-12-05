@@ -59,7 +59,7 @@
                         <li class="filter" data-filter="sobremesas">Sobremesas
                         <li class="filter" data-filter="bebidas">Bebidas
                     <ul id="portfolio">
-                        $if lenght produtos == 0
+                        $if Prelude.length produtos == 0
                             <h3>Nenhum produto encontrado
                         $else
                             $forall (Entity pid produto) <- produtos
