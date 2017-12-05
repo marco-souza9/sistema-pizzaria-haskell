@@ -99,11 +99,11 @@ postAdmProdutoCadastrarR = do
         FormSuccess (nomeP,imagemP,descricaoP,precoP,tipoP) -> do 
             case imagemP of
                 Just imagem -> do
-                    _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP (pack ("static/img/" ++ (removeCaracteres (unpack $ fileName imagem) " "))) True tipoP)
-                    liftIO $ fileMove imagem ("static/img/" ++ (removeCaracteres (unpack $ fileName imagem) " "))
+                    _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP (pack ("/static/img/uploads" ++ (removeCaracteres (unpack $ fileName imagem) " "))) True tipoP)
+                    liftIO $ fileMove imagem ("static/img/uploads" ++ (removeCaracteres (unpack $ fileName imagem) " "))
                     redirect $ AdmProdutoGerenciarR
                 _ -> do 
-                    _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP "static/img/padrao.png" True tipoP)
+                    _ <- runDB $ insert (Produto nomeP (unTextarea descricaoP) precoP "/static/img/padrao.png" True tipoP)
                     redirect $ AdmProdutoGerenciarR
         _ -> redirect $ AdmProdutoGerenciarR
         
