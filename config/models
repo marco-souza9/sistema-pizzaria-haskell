@@ -35,7 +35,6 @@ FormaPagamento
     deriving Show
 Pedido
     usuario UsuarioId
-    endereco EnderecoId
     formaPagamento FormaPagamentoId
     total Double
     status Int
