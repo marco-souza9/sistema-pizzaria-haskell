@@ -8,7 +8,7 @@ module Handler.Cliente where
 
 import Import
 
-formCadastro :: Form (Text,Text,Text,Text,Text,Text,Text,Text,Text)
+{-formCadastro :: Form (Text,Text,Text,Text,Text,Text,Text,Text,Text)
 formCadastro = renderDivs $ (,,,,,,,,) 
     <$> areq textField nomeSettings Nothing
     <*> areq emailField emailSettings Nothing
@@ -64,10 +64,10 @@ formCadastro = renderDivs $ (,,,,,,,,)
                            fsLabel= "",
                            fsTooltip= Nothing,
                            fsName= Nothing,
-                           fsAttrs=[("class","form-control"),("placeholder","Senha"),("maxlength","16")]}
+                           fsAttrs=[("class","form-control"),("placeholder","Senha"),("maxlength","16")]} -}
 
 getClienteAlterarR :: Handler Html
-getClienteAlterarR = do    
+getClienteAlterarR = undefined {- do    
     (widget, enctype) <- generateFormPost formCadastro
     defaultLayout $ do
         setTitle "Alterar dados cadastrais"
@@ -90,7 +90,7 @@ getClienteAlterarR = do
         addScript $ (StaticR js_jquery_mask_js)
         addScript $ (StaticR js_jquery_mask_min_js)
         addScript $ (StaticR js_mascaras_js)
-        addScript $ (StaticR js_main_js) 
+        addScript $ (StaticR js_main_js) -}
 
 postClienteAlterarR :: Handler Html
 postClienteAlterarR = undefined
