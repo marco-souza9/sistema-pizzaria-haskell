@@ -20,6 +20,4 @@
                     <li>
                         <a class="color_animation" href=@{PedidoListarR}>Meus pedidos
                     <li>
-                        <a class="color_animation" href=@{ClienteAlterarR}>Meus dados                        
-                    <li>
                         <a class="color_animation" href=@{LogoutR}>Logout
