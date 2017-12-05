@@ -4,5 +4,8 @@
     <div class="panel panel-primary">
         <div class="panel-heading" style="background-color:black;">Lista de pedidos
         <div class="panel-body">
-            $forall pedido <- pedidos
-                    ^{mostraPedido pedido}
+            $if Prelude.length pedidos == 0
+                <h3>Nenhum produto encontrado
+            $else
+                $forall pedido <- pedidos
+                        ^{mostraPedido pedido}

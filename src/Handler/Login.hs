@@ -73,6 +73,7 @@ postLoginR = do
                 Just (Entity usuid usuario) -> do
                     setSession "usuId" $ pack $ show $ fromSqlKey usuid
                     setSession "usuTipo" $ pack $ show (usuarioTipo usuario)
+                    setSession "carrinho" $ pack $ show ([] :: [(Int,Int)])
                     redirect $ controlarRedirecionamento $ usuarioTipo usuario
         _ -> redirect HomeR
 
@@ -80,4 +81,5 @@ getLogoutR :: Handler Html
 getLogoutR = do 
     deleteSession "usuCpf"
     deleteSession "usuTipo"
+    deleteSession "carrinho"
     redirect HomeR

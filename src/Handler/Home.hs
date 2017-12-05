@@ -8,7 +8,7 @@ module Handler.Home where
 
 import Import
 import Database.Persist.Postgresql
-
+import Prelude(length)
 getHomeR :: Handler Html
 getHomeR = do
     produtos <- runDB $ selectList [] [Asc ProdutoTipo, Asc ProdutoNome]

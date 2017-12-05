@@ -42,8 +42,8 @@ Pedido
         
     deriving Show
 ItemPedido
+    pedido PedidoId 
     produto ProdutoId
-    pedido PedidoId
     quantidade Int
         
     deriving Show
