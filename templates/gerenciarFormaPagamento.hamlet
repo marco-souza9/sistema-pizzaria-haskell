@@ -16,7 +16,9 @@
                        
                         <td width="15%">
                         <td width="25%">
-                            <p><h2><button class="btn btn-primary" style="background-color:steelblue; font-size:15px">Cadastrar
+                            <p>
+                                <h2>
+                                    <button class="btn btn-primary" style="background-color:steelblue; font-size:15px">Cadastrar
                         
                         <td width="15%">
 
@@ -27,15 +29,18 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color:black;">Formas de pagamento
             <div class="panel-body">
-
-                <table>
-                    <tr>
-                        <td width="80%">
-                            <h3>Cartão
-                        <!---->
-                       
-                        <td width="15%">
-                        <td width="25%">
-                                <p><h2><button class="btn btn-primary" style="background-color:steelblue; font-size:15px">Desabilitar
-                        <td width="15%">
-                <hr>
+                $forall (Entity fid forma) <- formas
+                    <table>
+                        <tr>
+                            <td width="80%">
+                                <h3>#{formaPagamentoNome forma}
+                            <!---->
+                           
+                            <!--<td width="15%">
+                            <td width="25%">
+                                    <p>
+                                        <h2>
+                                            <form action=@{AdmFormPagAlterarR} method=post enctype=#{enctype}>
+                                                <button class="btn btn-primary" style="background-color:steelblue; font-size:15px">#{verificarStatusFormaPagamento $ formaPagamentoDisponivel forma}
+                            <td width="15%">-->
+                    <hr>
