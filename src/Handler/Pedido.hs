@@ -153,8 +153,25 @@ getPedidoAberConcluirR = do
         addScript $ (StaticR js_mascaras_js)
         addScript $ (StaticR js_main_js)   
 
+retornarIdUsuario :: Maybe Text ->Key Usuario
+retornarIdUsuario (Just valor) = chave
+    where
+        valorInt = read (unpack valor) :: Int
+        chave = toSqlKey (fromIntegral (valorInt) ) :: UsuarioId
+    
+
 postPedidoAberConcluirR :: Handler Html
-postPedidoAberConcluirR = undefined
+postPedidoAberConcluirR = do
+    formaId <- runInputPost $ ireq intField "formaId"
+    usuid <- lookupSession "usuId";
+    uid <- return $ retornarIdUsuario usuid
+    carrinho <- lookupSession "carrinho"
+    lista <- return $ retornarCarrinho carrinho
+    dataAtual <- liftIO $ getCurrentTime
+    fid <- return $ (toSqlKey $ fromIntegral formaId :: FormaPagamentoId)
+    pid <- runDB $ insert (Pedido uid fid 0.0 1 dataAtual)
+    
+    redirect PedidoListarR
 
 mostraPedido :: Entity Pedido -> Widget
 mostraPedido (Entity pid pedido) =  do
@@ -167,8 +184,9 @@ mostraPedido (Entity pid pedido) =  do
                             <b>#{usuarioNome usuario}
                         <p style="margin-top:3px;">#{usuarioCpf usuario}
                         <p style="margin-top:3px;">#{formatarData $ pedidoData pedido}
-                     
+                    <td width="40%">
                     <td>
+                    <td width="30%">
                         <select>
                             <option value="pizza">Em aberto
                             <option value="bebida">Montando
@@ -179,8 +197,6 @@ mostraPedido (Entity pid pedido) =  do
                         <p>
                             <h2>R$#{show $ pedidoTotal pedido} 
             
-                    <td width="10%">
-                        <button class="btn btn-success" style="font-size:16px">Detalhar
             <hr>
     |] 
 
