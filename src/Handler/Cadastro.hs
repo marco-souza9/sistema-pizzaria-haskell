@@ -67,7 +67,7 @@ formCadastro = renderDivs $ (,,,,,,,,,,)
                            fsName= Nothing,
                            fsAttrs=[("class","form-control"),("placeholder","Estado"),("maxlength","50")]}
                                    
-        senhaSettings = FieldSettings{fsId= Nothing,
+        senhaSettings = FieldSettings{fsId= Just "senha",
                            fsLabel= "",
                            fsTooltip= Nothing,
                            fsName= Nothing,
@@ -76,8 +76,7 @@ formCadastro = renderDivs $ (,,,,,,,,,,)
                            fsLabel= "",
                            fsTooltip= Nothing,
                            fsName= Nothing,
-                           fsAttrs=[("class","form-control"),("placeholder","Confirmar senha"),("maxlength","16")]}
-
+                           fsAttrs=[("class","form-control"),("placeholder","Confirmar senha"),("maxlength","16"),("input","verificaSenha(this,'senha')")]}
 
 verificarTipoCadastro :: Int -> Int
 verificarTipoCadastro 0 = 1
@@ -99,7 +98,6 @@ getCadastroR = do
         --corpo html
         
         $(whamletFile "templates/cadastro.hamlet")
-    
         --javascript estátic7o
         addScript $ (StaticR js_jquery_1_10_2_min_js) 
         addScript $ (StaticR js_jquery_1_10_2_js)        
@@ -109,7 +107,8 @@ getCadastroR = do
         addScript $ (StaticR js_jquery_mask_min_js)
         addScript $ (StaticR js_mascaras_js)
         addScript $ (StaticR js_main_js) 
-
+        addScript $ (StaticR js_cadastro_js) 
+    
 postCadastroR :: Handler Html
 postCadastroR = do 
     ((res,_),_) <- runFormPost formCadastro
