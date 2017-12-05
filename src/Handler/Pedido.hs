@@ -9,7 +9,7 @@ module Handler.Pedido where
 import Import
 import Database.Persist.Sql
 import Data.Time
-import Prelude (read,head) 
+import Prelude (read,head,foldl,length) 
 
 verificarStatusPedido :: Int -> Text
 verificarStatusPedido 1 = "Aberto"
@@ -158,7 +158,10 @@ retornarIdUsuario (Just valor) = chave
     where
         valorInt = read (unpack valor) :: Int
         chave = toSqlKey (fromIntegral (valorInt) ) :: UsuarioId
-    
+        
+calculaTotal :: [(Produto,Double)] -> Double
+calculaTotal [] = 0.0
+calculaTotal (x:xs) = ((produtoPreco $ fst x) * (snd x)) + calculaTotal xs
 
 postPedidoAberConcluirR :: Handler Html
 postPedidoAberConcluirR = do
@@ -167,9 +170,14 @@ postPedidoAberConcluirR = do
     uid <- return $ retornarIdUsuario usuid
     carrinho <- lookupSession "carrinho"
     lista <- return $ retornarCarrinho carrinho
+    precos <- runDB $ mapM (get404 . (toSqlKey :: Int64 -> ProdutoId) . fromIntegral . fst) lista 
+    quantidades <- return [ (fromIntegral $ snd x) :: Double | x <- lista]
+    conjunto <- return $ zip precos quantidades
+    total <- return $ calculaTotal conjunto
+    
     dataAtual <- liftIO $ getCurrentTime
     fid <- return $ (toSqlKey $ fromIntegral formaId :: FormaPagamentoId)
-    pid <- runDB $ insert (Pedido uid fid 0.0 1 dataAtual)
+    pid <- runDB $ insert (Pedido uid fid total 1 dataAtual)
     
     redirect PedidoListarR
 
