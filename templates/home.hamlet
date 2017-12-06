@@ -13,9 +13,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav main-nav  clear navbar-right ">
                     <li>
-                        <a class="color_animation" href="#story">Quem somos
+                        <a class="color_animation" href=@{HomeR}#story>Quem somos
                     <li>
-                        <a class="color_animation" href="#pricing">Cardápio
+                        <a class="color_animation" href=@{HomeR}#pricing>Cardápio
                     <li>
                         <a class="color_animation nao" href=@{CadastroR}>Crie sua conta
                     <li>
@@ -73,7 +73,7 @@
             <span class="social_heading">Siga-nos em nossas redes sociais!
             <ul class="social_icons">
                 <li>
-                    <a class="icon-github color_animation" href="https://github.com/marco-souza9/sistema-pizzaria-haskell" target="_blank">
+                    <a class="icon-github color_animation" href=@{HomeR}>
         <div class="col-md-4">
             <span class="social_heading">Ligue!
             <span class="social_info">
@@ -84,4 +84,4 @@
     <div class="container">
         <div class="col-md-12">
             <p class="sub-footer-text text-center">Voltar para o 
-                <a href="#top">ir ao TOPO
+                <a href=@{HomeR}#top>ir ao TOPO
